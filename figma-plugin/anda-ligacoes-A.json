@@ -1,0 +1,626 @@
+{
+ "frames": [
+  {
+   "idx": 0,
+   "id": "A-01",
+   "nome": "A · Tarefa 1 · Ecrã inicial do telemóvel"
+  },
+  {
+   "idx": 1,
+   "id": "A-02",
+   "nome": "A · Tarefa 1 · O meu cartão · Tudo"
+  },
+  {
+   "idx": 2,
+   "id": "A-03",
+   "nome": "A · Tarefa 1 · O meu cartão · Viagens"
+  },
+  {
+   "idx": 3,
+   "id": "A-04",
+   "nome": "A · Tarefa 1 · O meu cartão · Carregamentos"
+  },
+  {
+   "idx": 4,
+   "id": "A-05",
+   "nome": "A · Tarefa 2 · Início (Sofia)"
+  },
+  {
+   "idx": 5,
+   "id": "A-06",
+   "nome": "A · Tarefa 2 · Pedidos"
+  },
+  {
+   "idx": 6,
+   "id": "A-07",
+   "nome": "A · Tarefa 2 · Novo pedido · tipo"
+  },
+  {
+   "idx": 7,
+   "id": "A-08",
+   "nome": "A · Tarefa 2 · Novo pedido · Sub23 escolhido"
+  },
+  {
+   "idx": 8,
+   "id": "A-09",
+   "nome": "A · Tarefa 2 · Pedido Sub23 · detalhes"
+  },
+  {
+   "idx": 9,
+   "id": "A-10",
+   "nome": "A · Tarefa 2 · Pedido Sub23 · CMD escolhida"
+  },
+  {
+   "idx": 10,
+   "id": "A-11",
+   "nome": "A · Tarefa 2 · Pedido Sub23 · tudo preenchido"
+  },
+  {
+   "idx": 11,
+   "id": "A-12",
+   "nome": "A · Tarefa 2 · Pedido enviado"
+  },
+  {
+   "idx": 12,
+   "id": "A-13",
+   "nome": "A · Tarefa 2 · Pedidos · em análise"
+  },
+  {
+   "idx": 13,
+   "id": "A-14",
+   "nome": "A · Tarefa 3 · Início (Carlos)"
+  },
+  {
+   "idx": 14,
+   "id": "A-15",
+   "nome": "A · Tarefa 3 · Renovar passe"
+  },
+  {
+   "idx": 15,
+   "id": "A-16",
+   "nome": "A · Tarefa 3 · Erro + pop-up do Andy"
+  },
+  {
+   "idx": 16,
+   "id": "A-17",
+   "nome": "A · Tarefa 3 · Erro (pop-up fechado)"
+  },
+  {
+   "idx": 17,
+   "id": "A-18",
+   "nome": "A · Tarefa 3 · Andy · conversa"
+  },
+  {
+   "idx": 18,
+   "id": "A-19",
+   "nome": "A · Tarefa 3 · Andy · confirmar no MB WAY"
+  },
+  {
+   "idx": 19,
+   "id": "A-20",
+   "nome": "A · Tarefa 3 · Andy · outro meio"
+  },
+  {
+   "idx": 20,
+   "id": "A-21",
+   "nome": "A · Tarefa 3 · Passe renovado"
+  },
+  {
+   "idx": 21,
+   "id": "A-22",
+   "nome": "A · Outros ecrãs · Mais"
+  },
+  {
+   "idx": 22,
+   "id": "A-23",
+   "nome": "A · Outros ecrãs · Andy · início"
+  }
+ ],
+ "links": [
+  {
+   "from": 0,
+   "to": 1,
+   "label": "Passe Sub23"
+  },
+  {
+   "from": 0,
+   "to": 4,
+   "label": "Anda"
+  },
+  {
+   "from": 1,
+   "to": 4,
+   "label": "‹"
+  },
+  {
+   "from": 1,
+   "to": 2,
+   "label": "Viagens"
+  },
+  {
+   "from": 1,
+   "to": 3,
+   "label": "Carregamentos"
+  },
+  {
+   "from": 1,
+   "to": 22,
+   "label": "Precisa de ajuda?"
+  },
+  {
+   "from": 1,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 1,
+   "to": 5,
+   "label": "Pedidos"
+  },
+  {
+   "from": 1,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 2,
+   "to": 4,
+   "label": "‹"
+  },
+  {
+   "from": 2,
+   "to": 1,
+   "label": "Tudo"
+  },
+  {
+   "from": 2,
+   "to": 3,
+   "label": "Carregamentos"
+  },
+  {
+   "from": 2,
+   "to": 22,
+   "label": "Precisa de ajuda?"
+  },
+  {
+   "from": 2,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 2,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 2,
+   "to": 5,
+   "label": "Pedidos"
+  },
+  {
+   "from": 2,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 3,
+   "to": 4,
+   "label": "‹"
+  },
+  {
+   "from": 3,
+   "to": 1,
+   "label": "Tudo"
+  },
+  {
+   "from": 3,
+   "to": 2,
+   "label": "Viagens"
+  },
+  {
+   "from": 3,
+   "to": 22,
+   "label": "Precisa de ajuda?"
+  },
+  {
+   "from": 3,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 3,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 3,
+   "to": 5,
+   "label": "Pedidos"
+  },
+  {
+   "from": 3,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 4,
+   "to": 1,
+   "label": "Ver histórico"
+  },
+  {
+   "from": 4,
+   "to": 5,
+   "label": "Pedir um passe"
+  },
+  {
+   "from": 4,
+   "to": 22,
+   "label": "Precisa de ajuda?"
+  },
+  {
+   "from": 4,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 4,
+   "to": 5,
+   "label": "Pedidos"
+  },
+  {
+   "from": 4,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 5,
+   "to": 4,
+   "label": "‹"
+  },
+  {
+   "from": 5,
+   "to": 6,
+   "label": "Novo pedido"
+  },
+  {
+   "from": 5,
+   "to": 22,
+   "label": "Precisa de ajuda?"
+  },
+  {
+   "from": 5,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 5,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 5,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 6,
+   "to": 5,
+   "label": "‹"
+  },
+  {
+   "from": 6,
+   "to": 7,
+   "label": "Sub23"
+  },
+  {
+   "from": 6,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 6,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 6,
+   "to": 5,
+   "label": "Pedidos"
+  },
+  {
+   "from": 6,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 7,
+   "to": 8,
+   "label": "Continuar"
+  },
+  {
+   "from": 7,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 7,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 7,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 8,
+   "to": 7,
+   "label": "‹"
+  },
+  {
+   "from": 8,
+   "to": 9,
+   "label": "Chave Móvel Digital"
+  },
+  {
+   "from": 8,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 8,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 8,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 9,
+   "to": 10,
+   "label": "No meu telemóvel (NFC)"
+  },
+  {
+   "from": 9,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 9,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 9,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 10,
+   "to": 11,
+   "label": "Enviar pedido"
+  },
+  {
+   "from": 10,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 10,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 10,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 11,
+   "to": 12,
+   "label": "Ver os meus pedidos"
+  },
+  {
+   "from": 11,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 11,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 11,
+   "to": 12,
+   "label": "Pedidos"
+  },
+  {
+   "from": 11,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 12,
+   "to": 4,
+   "label": "‹"
+  },
+  {
+   "from": 12,
+   "to": 6,
+   "label": "Novo pedido"
+  },
+  {
+   "from": 12,
+   "to": 22,
+   "label": "Precisa de ajuda?"
+  },
+  {
+   "from": 12,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 12,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 12,
+   "to": 21,
+   "label": "Mais"
+  },
+  {
+   "from": 13,
+   "to": 14,
+   "label": "Renovar passe"
+  },
+  {
+   "from": 14,
+   "to": 13,
+   "label": "‹"
+  },
+  {
+   "from": 14,
+   "to": 15,
+   "label": "Pagar 40,00 € e renovar"
+  },
+  {
+   "from": 14,
+   "to": 13,
+   "label": "Início"
+  },
+  {
+   "from": 15,
+   "to": 16,
+   "label": "✕"
+  },
+  {
+   "from": 15,
+   "to": 17,
+   "label": "Sim, ajudar"
+  },
+  {
+   "from": 16,
+   "to": 14,
+   "label": "‹"
+  },
+  {
+   "from": 16,
+   "to": 17,
+   "label": "Precisa de ajuda?"
+  },
+  {
+   "from": 16,
+   "to": 13,
+   "label": "Início"
+  },
+  {
+   "from": 17,
+   "to": 16,
+   "label": "‹"
+  },
+  {
+   "from": 17,
+   "to": 18,
+   "label": "Sim, pagar com MB WAY"
+  },
+  {
+   "from": 17,
+   "to": 19,
+   "label": "Usar outro meio"
+  },
+  {
+   "from": 17,
+   "to": 13,
+   "label": "Início"
+  },
+  {
+   "from": 18,
+   "to": 17,
+   "label": "Recusar"
+  },
+  {
+   "from": 18,
+   "to": 20,
+   "label": "Confirmar"
+  },
+  {
+   "from": 19,
+   "to": 17,
+   "label": "Cancelar"
+  },
+  {
+   "from": 20,
+   "to": 13,
+   "label": "Voltar ao início"
+  },
+  {
+   "from": 20,
+   "to": 13,
+   "label": "Início"
+  },
+  {
+   "from": 21,
+   "to": 4,
+   "label": "‹"
+  },
+  {
+   "from": 21,
+   "to": 22,
+   "label": "Andy · Ajuda"
+  },
+  {
+   "from": 21,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 21,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 21,
+   "to": 5,
+   "label": "Pedidos"
+  },
+  {
+   "from": 22,
+   "to": 4,
+   "label": "‹"
+  },
+  {
+   "from": 22,
+   "to": 3,
+   "label": "O carregamento ficou no cartão?"
+  },
+  {
+   "from": 22,
+   "to": 5,
+   "label": "Pedir o Sub23"
+  },
+  {
+   "from": 22,
+   "to": 4,
+   "label": "Início"
+  },
+  {
+   "from": 22,
+   "to": 1,
+   "label": "Cartão"
+  },
+  {
+   "from": 22,
+   "to": 5,
+   "label": "Pedidos"
+  },
+  {
+   "from": 22,
+   "to": 21,
+   "label": "Mais"
+  }
+ ]
+}
