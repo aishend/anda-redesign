@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="assets/ic_anda.png"><title>Anda · Protótipo</title></head>
+<body>
+<div class="stage">
+  <div class="testbar hidden" id="testbar"><span class="grow" data-label></span><button data-giveup>Desistir</button><button class="done" data-done>Terminei</button></div>
+  <div class="phone" id="phone"></div>
+  <div class="disclaimer">Protótipo académico · Interação Pessoa-Computador, FEUP 2026/27 · Não é a app oficial da Anda.</div>
+</div>
+<script src="js/icons.js"></script><script src="js/screens.js"></script><script src="js/engine.js"></script>
+<script>
+  const q = new URLSearchParams(location.search);
+  const phoneEl = document.getElementById('phone');
+  if (q.get('modo') === 'teste') {
+    new Study(phoneEl, document.getElementById('testbar'));
+  } else {
+    const v = (q.get('v') || 'A').toUpperCase();
+    const u = q.get('u') || 'sofia';
+    new Phone(phoneEl, { v, screen: q.get('ecra') || 'os-home', sel: { u } });
+    document.title = 'Anda · Protótipo (versão ' + v + ')';
+  }
+</script>
+</body></html>

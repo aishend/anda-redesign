@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-PT" style="background:var(--bg)"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="assets/ic_anda.png">
+<title>Anda · Painel do protótipo</title>
+</head>
+<body style="background:var(--bg)">
+<div class="admin">
+  <header><img src="assets/logo_anda.png" alt="anda"><div><h1>Protótipo de alta fidelidade</h1><div class="muted">Interação Pessoa-Computador · FEUP 2026/27 · protótipo académico, não é a app oficial</div></div></header>
+
+  <section class="panel">
+    <h2>1 · Explorar o protótipo</h2>
+    <p>Abre o protótipo livremente, sem registar dados. Cada link começa no ecrã inicial de uma tarefa.</p>
+    <div class="tablewrap" style="max-height:none"><table>
+      <tr><th>Tarefa</th><th>Versão A</th><th>Versão B</th><th>O que muda</th></tr>
+      <tr><td><b>1 · Widget do passe</b></td><td><a href="app.html?v=A&u=sofia&ecra=os-home">Abrir A</a></td><td><a href="app.html?v=B&u=sofia&ecra=os-home">Abrir B</a></td><td>A: widget simples, o estado do carregamento está no histórico da app · B: widget mostra também se o carregamento está gravado</td></tr>
+      <tr><td><b>2 · Pedir o Sub23</b></td><td><a href="app.html?v=A&u=sofia&ecra=app-inicio">Abrir A</a></td><td><a href="app.html?v=B&u=sofia&ecra=app-inicio">Abrir B</a></td><td>A: 2 ecrãs (tipo → detalhes num só ecrã) · B: passo a passo em 4 ecrãs com barra de progresso</td></tr>
+      <tr><td><b>3 · Andy resolve um erro</b></td><td><a href="app.html?v=A&u=carlos&ecra=app-inicio">Abrir A</a></td><td><a href="app.html?v=B&u=carlos&ecra=app-inicio">Abrir B</a></td><td>A: assistente Andy (pop-up + conversa) · B: sem assistente, a solução aparece no próprio ecrã de erro</td></tr>
+    </table></div>
+    <div class="row"><a class="btn secondary" href="galeria.html" style="text-decoration:none">Galeria de ecrãs (para o Figma e para o relatório)</a></div>
+  </section>
+
+  <section class="panel">
+    <h2>2 · Sessão de teste com um participante</h2>
+    <p>Cada participante faz as 3 tarefas nas duas versões. A ordem das versões alterna para equilibrar o efeito de aprendizagem: participantes ímpares fazem A→B e pares B→A. Os tempos, toques, respostas, satisfação e SUS ficam guardados neste browser.</p>
+    <div class="row">
+      <label>Nº do participante<input id="pid" type="number" min="1" value="1"></label>
+      <label>Ordem<select id="order"><option value="auto">Automática</option><option value="AB">A → B</option><option value="BA">B → A</option></select></label>
+      <button class="btn primary" id="start">Começar sessão</button>
+    </div>
+    <p id="resume"></p>
+  </section>
+
+  <section class="panel">
+    <h2>3 · Resultados</h2>
+    <div class="row">
+      <button class="btn secondary" id="exp-res">Exportar tarefas (CSV)</button>
+      <button class="btn secondary" id="exp-sus">Exportar SUS (CSV)</button>
+      <button class="btn secondary" id="exp-ev">Exportar eventos (CSV)</button>
+      <button class="btn secondary" id="exp-json">Cópia de segurança (JSON)</button>
+      <label style="flex-direction:row;align-items:center;gap:8px">Importar JSON<input type="file" id="imp" accept=".json"></label>
+      <button class="btn secondary" id="clear" style="color:var(--anda-red);border-color:var(--anda-red)">Apagar dados</button>
+    </div>
+    <div id="summary"></div>
+    <h3 style="margin:6px 0 0">Tarefas</h3><div class="tablewrap" id="t-res"></div>
+    <h3 style="margin:6px 0 0">SUS</h3><div class="tablewrap" id="t-sus"></div>
+  </section>
+</div>
+
+<script src="js/icons.js"></script><script src="js/screens.js"></script><script src="js/engine.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const REQ = { 1: { taxa: 90, tempo: 20, sat: 4 }, 2: { taxa: 85, tempo: 120, sat: 4 }, 3: { taxa: 90, tempo: 60, sat: 4 } };
+
+function table(rows, cols) {
+  if (!rows.length) return '<p style="padding:10px">Ainda sem dados.</p>';
+  cols = cols || Object.keys(rows[0]);
+  return `<table><tr>${cols.map(c => `<th>${c}</th>`).join('')}</tr>${rows.map(r => `<tr>${cols.map(c => `<td>${r[c] ?? ''}</td>`).join('')}</tr>`).join('')}</table>`;
+}
+const mean = a => a.length ? a.reduce((x, y) => x + y, 0) / a.length : NaN;
+const f1 = x => isNaN(x) ? '—' : x.toFixed(1);
+
+function refresh() {
+  const res = Store.get('anda_results', []), sus = Store.get('anda_sus', []);
+  $('#t-res').innerHTML = table(res, ['pid', 'ordem', 'versao', 'tarefa', 'sucesso', 'tempo_s', 'toques', 'toques_validos', 'voltar', 'satisfacao', 'desistiu', 'escolhas', 'resp_valido', 'resp_gravado']);
+  $('#t-sus').innerHTML = table(sus, ['pid', 'ordem', 'versao', 'posicao', 'sus']);
+  // Resumo por tarefa e versão, comparado com os requisitos de usabilidade da Fase 2
+  let h = '<div class="tablewrap" style="max-height:none"><table><tr><th>Tarefa</th><th>Versão</th><th>N</th><th>Sucesso</th><th>Tempo médio (s)</th><th>Toques médios</th><th>Satisfação média</th><th>Requisito</th></tr>';
+  for (const t of [1, 2, 3]) for (const v of ['A', 'B']) {
+    const r = res.filter(x => x.tarefa === t && x.versao === v); const q = REQ[t];
+    const taxa = r.length ? 100 * mean(r.map(x => x.sucesso)) : NaN;
+    const okR = r.filter(x => x.sucesso);
+    const tempo = mean(okR.map(x => x.tempo_s)), sat = mean(r.map(x => x.satisfacao));
+    const cls = (ok) => isNaN(ok) ? '' : ok ? 'ok-t' : 'err-t';
+    h += `<tr><td>${t} · ${TASKS[t].titulo}</td><td>${v}</td><td>${r.length}</td>
+      <td class="${r.length ? cls(taxa >= q.taxa) : ''}">${f1(taxa)}%</td>
+      <td class="${okR.length ? cls(tempo < q.tempo) : ''}">${f1(tempo)}</td><td>${f1(mean(r.map(x => x.toques_validos)))}</td>
+      <td class="${r.length ? cls(sat >= q.sat) : ''}">${f1(sat)}</td><td class="small">≥${q.taxa}% · &lt;${q.tempo}s · ≥${q.sat}/5</td></tr>`;
+  }
+  h += '</table></div>';
+  const sA = mean(sus.filter(x => x.versao === 'A').map(x => x.sus)), sB = mean(sus.filter(x => x.versao === 'B').map(x => x.sus));
+  h += `<p style="margin-top:8px"><b>SUS médio:</b> A = ${f1(sA)} · B = ${f1(sB)} <span class="small">(68 = média da indústria)</span></p>`;
+  $('#summary').innerHTML = h;
+  const s = Store.get('anda_session', null);
+  $('#resume').innerHTML = s ? `Há uma sessão a meio (participante ${s.pid}). <a href="app.html?modo=teste">Continuar sessão</a>` : '';
+  const ids = res.map(r => +r.pid).filter(Boolean); if (ids.length) $('#pid').value = Math.max(...ids) + 1;
+}
+
+$('#start').onclick = () => {
+  const pid = +$('#pid').value || 1;
+  let o = $('#order').value; if (o === 'auto') o = pid % 2 ? 'AB' : 'BA';
+  const order = o.split('');
+  Store.set('anda_session', { pid, order, i: 0, steps: buildSteps(order), inicio: new Date().toISOString() });
+  location.href = 'app.html?modo=teste';
+};
+$('#exp-res').onclick = () => download('anda-tarefas.csv', toCSV(Store.get('anda_results', [])));
+$('#exp-sus').onclick = () => download('anda-sus.csv', toCSV(Store.get('anda_sus', [])));
+$('#exp-ev').onclick = () => download('anda-eventos.csv', toCSV(Store.get('anda_events', [])));
+$('#exp-json').onclick = () => {
+  const d = { results: Store.get('anda_results', []), sus: Store.get('anda_sus', []), events: Store.get('anda_events', []) };
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(d)], { type: 'application/json' }));
+  a.download = 'anda-dados-' + new Date().toISOString().slice(0, 10) + '.json'; a.click();
+};
+$('#imp').onchange = async e => {
+  const d = JSON.parse(await e.target.files[0].text());
+  // junta aos dados existentes (útil quando os testes são feitos em vários computadores)
+  Store.set('anda_results', [...Store.get('anda_results', []), ...(d.results || [])]);
+  Store.set('anda_sus', [...Store.get('anda_sus', []), ...(d.sus || [])]);
+  Store.set('anda_events', [...Store.get('anda_events', []), ...(d.events || [])]);
+  refresh();
+};
+let armed = false;
+$('#clear').onclick = () => {
+  if (!armed) { armed = true; $('#clear').textContent = 'Clique outra vez para apagar TUDO'; setTimeout(() => { armed = false; $('#clear').textContent = 'Apagar dados'; }, 4000); return; }
+  ['anda_results', 'anda_sus', 'anda_events', 'anda_session'].forEach(k => localStorage.removeItem(k));
+  armed = false; $('#clear').textContent = 'Apagar dados'; refresh();
+};
+refresh();
+</script>
+</body></html>

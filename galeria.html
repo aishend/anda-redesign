@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-PT"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"><link rel="icon" href="assets/ic_anda.png">
+<title>Anda · Galeria de ecrãs</title>
+</head>
+<body class="gallery">
+<div class="gal" id="gal">
+  <div class="no-figma" style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+    <h1 style="margin-right:auto">Galeria de ecrãs</h1>
+    <a href="galeria.html">Todas</a> · <a href="galeria.html?v=A">Só versão A</a> · <a href="galeria.html?v=B">Só versão B</a> · <a href="index.html">Painel</a>
+    <button class="btn secondary" id="dl" style="width:auto;min-height:40px">Descarregar ligações para o Figma (JSON)</button>
+  </div>
+</div>
+<script src="js/icons.js"></script><script src="js/screens.js"></script><script src="js/engine.js"></script><script src="js/gallery.js"></script>
+<script>
+  const q = new URLSearchParams(location.search);
+  const vs = q.get('v') ? [q.get('v').toUpperCase()] : ['A', 'B'];
+  if (q.has('figma')) document.querySelector('.no-figma').remove(); // versão limpa para importar
+  const frames = allFrames(vs);
+  const gal = document.getElementById('gal');
+  const roots = [];
+  let curGroup = null, row = null;
+  for (const f of frames) {
+    const g = `Versão ${f.v} · ${f.grupo}`;
+    if (g !== curGroup) {
+      curGroup = g;
+      const sec = document.createElement('section'); sec.className = 'gal-group';
+      sec.innerHTML = `<h2>${g}</h2><div class="gal-row"></div>`;
+      gal.appendChild(sec); row = sec.querySelector('.gal-row');
+    }
+    const item = document.createElement('div'); item.className = 'gal-item';
+    item.innerHTML = `<div class="lbl">${f.id} · ${f.nome}</div>
+      <div class="phone ${f.screen === 'os-home' ? 'on-os' : ''}"><div class="statusbar"><span>21:40</span><span style="display:flex;gap:6px;align-items:center">${I.signal}${I.battery}</span></div>
+      <div class="screen">${SCREENS[f.screen].call(SCREENS, f.sel, f.v)}</div><div class="homebar"><button></button></div></div>`;
+    row.appendChild(item);
+    roots.push(item.querySelector('.phone'));
+  }
+  const links = computeLinks(frames, roots);
+  window.FIGMA_LINKS = { frames: frames.map(f => ({ idx: f.idx, id: f.id, nome: f.titulo })), links };
+  document.getElementById('dl')?.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(window.FIGMA_LINKS, null, 1)], { type: 'application/json' }));
+    a.download = `anda-ligacoes-${vs.join('')}.json`; a.click();
+  });
+  console.log(`${frames.length} ecrãs, ${links.length} ligações`);
+</script>
+</body></html>

@@ -1,0 +1,34 @@
+// Ícones SVG inline (traço simples, estilo Material) — importam bem no Figma como vetores.
+const I = (() => {
+  const s = (d, extra = '') => `<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ${extra}>${d}</svg>`;
+  return {
+    home: s('<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>'),
+    card: s('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/>'),
+    list: s('<path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1"/><circle cx="4.5" cy="12" r="1"/><circle cx="4.5" cy="18" r="1"/>'),
+    more: s('<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>'),
+    back: s('<path d="M15 18l-6-6 6-6"/>'),
+    chev: s('<path d="M9 6l6 6-6 6"/>'),
+    check: s('<path d="M5 12.5l4.5 4.5L19 7"/>'),
+    alert: s('<path d="M12 8v5"/><path d="M12 16.5v.5"/><circle cx="12" cy="12" r="9"/>'),
+    warn: s('<path d="M12 3l9.5 17h-19z"/><path d="M12 10v4"/><path d="M12 17v.5"/>'),
+    close: s('<path d="M6 6l12 12M18 6L6 18"/>'),
+    mic: s('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0"/><path d="M12 18v3"/>'),
+    send: s('<path d="M4 12l16-8-6 16-2-7z"/>'),
+    plus: s('<path d="M12 5v14M5 12h14"/>'),
+    train: s('<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 11h12"/><path d="M8 21l2-4M16 21l-2-4"/>'),
+    topup: s('<path d="M12 4v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/>'),
+    phone: s('<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>'),
+    nfc: s('<path d="M7 7a7 7 0 010 10"/><path d="M11 5a10 10 0 010 14"/><path d="M15 3a13 13 0 010 18"/>'),
+    user: s('<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/>'),
+    gear: s('<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>'),
+    help: s('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-1 .7-1.5 1.2-1.5 2.5"/><path d="M12 17v.5"/>'),
+    mail: s('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'),
+    logout: s('<path d="M15 4h4v16h-4"/><path d="M10 8l-4 4 4 4"/><path d="M6 12h10"/>'),
+    doc: s('<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/>'),
+    camera: s('<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7l2-3h4l2 3"/><circle cx="12" cy="13.5" r="3.5"/>'),
+    key: s('<circle cx="8" cy="15" r="4"/><path d="M11 12l9-9"/><path d="M17 6l3 3"/>'),
+    mail2: s('<path d="M4 6h16v12H4z"/><path d="M4 6l8 7 8-7"/>'),
+    signal: '<svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>',
+    battery: '<svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x="0.5" y="0.5" width="21" height="11" rx="3" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="16" height="8" rx="2" fill="currentColor"/><rect x="22.5" y="4" width="2" height="4" rx="1" fill="currentColor" opacity=".5"/></svg>',
+  };
+})();
