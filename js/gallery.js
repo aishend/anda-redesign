@@ -106,7 +106,9 @@ function computeLinks(frames, rootEls) {
       const to = matchFrame(frames, f.v, b.dataset.go || f.screen, sel);
       if (!to || to.idx === f.idx) return;
       const label = (b.dataset.label || b.textContent).trim().replace(/\s+/g, ' ');
-      if (!links.some(l => l.from === f.idx && l.label === label)) links.push({ from: f.idx, to: to.idx, label });
+      const R = root.getBoundingClientRect(), r = b.getBoundingClientRect();
+      const rect = { x: Math.round(r.left - R.left), y: Math.round(r.top - R.top), w: Math.round(r.width), h: Math.round(r.height) };
+      if (!links.some(l => l.from === f.idx && l.label === label)) links.push({ from: f.idx, to: to.idx, label, rect });
     });
   });
   return links;

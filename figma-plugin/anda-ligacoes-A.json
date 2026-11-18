@@ -120,507 +120,1113 @@
   {
    "from": 0,
    "to": 1,
-   "label": "Passe Sub23"
+   "label": "Passe Sub23",
+   "rect": {
+    "x": 18,
+    "y": 169,
+    "w": 354,
+    "h": 144
+   }
   },
   {
    "from": 0,
    "to": 4,
-   "label": "Anda"
+   "label": "Anda",
+   "rect": {
+    "x": 26,
+    "y": 672,
+    "w": 85,
+    "h": 80
+   }
   },
   {
    "from": 1,
    "to": 4,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 1,
    "to": 2,
-   "label": "Viagens"
+   "label": "Viagens",
+   "rect": {
+    "x": 85,
+    "y": 228,
+    "w": 77,
+    "h": 35
+   }
   },
   {
    "from": 1,
    "to": 3,
-   "label": "Carregamentos"
+   "label": "Carregamentos",
+   "rect": {
+    "x": 171,
+    "y": 228,
+    "w": 123,
+    "h": 35
+   }
   },
   {
    "from": 1,
    "to": 22,
-   "label": "Precisa de ajuda?"
+   "label": "Precisa de ajuda?",
+   "rect": {
+    "x": 209,
+    "y": 657,
+    "w": 167,
+    "h": 47
+   }
   },
   {
    "from": 1,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 1,
    "to": 5,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 1,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 2,
    "to": 4,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 2,
    "to": 1,
-   "label": "Tudo"
+   "label": "Tudo",
+   "rect": {
+    "x": 16,
+    "y": 230,
+    "w": 61,
+    "h": 35
+   }
   },
   {
    "from": 2,
    "to": 3,
-   "label": "Carregamentos"
+   "label": "Carregamentos",
+   "rect": {
+    "x": 171,
+    "y": 230,
+    "w": 123,
+    "h": 35
+   }
   },
   {
    "from": 2,
    "to": 22,
-   "label": "Precisa de ajuda?"
+   "label": "Precisa de ajuda?",
+   "rect": {
+    "x": 209,
+    "y": 657,
+    "w": 167,
+    "h": 47
+   }
   },
   {
    "from": 2,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 2,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 2,
    "to": 5,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 2,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 3,
    "to": 4,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 3,
    "to": 1,
-   "label": "Tudo"
+   "label": "Tudo",
+   "rect": {
+    "x": 16,
+    "y": 230,
+    "w": 61,
+    "h": 35
+   }
   },
   {
    "from": 3,
    "to": 2,
-   "label": "Viagens"
+   "label": "Viagens",
+   "rect": {
+    "x": 85,
+    "y": 230,
+    "w": 77,
+    "h": 35
+   }
   },
   {
    "from": 3,
    "to": 22,
-   "label": "Precisa de ajuda?"
+   "label": "Precisa de ajuda?",
+   "rect": {
+    "x": 209,
+    "y": 657,
+    "w": 167,
+    "h": 47
+   }
   },
   {
    "from": 3,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 3,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 3,
    "to": 5,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 3,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 4,
    "to": 1,
-   "label": "Ver histórico"
+   "label": "Ver histórico",
+   "rect": {
+    "x": 17,
+    "y": 374,
+    "w": 357,
+    "h": 66
+   }
   },
   {
    "from": 4,
    "to": 5,
-   "label": "Pedir um passe"
+   "label": "Pedir um passe",
+   "rect": {
+    "x": 17,
+    "y": 440,
+    "w": 357,
+    "h": 66
+   }
   },
   {
    "from": 4,
    "to": 22,
-   "label": "Precisa de ajuda?"
+   "label": "Precisa de ajuda?",
+   "rect": {
+    "x": 209,
+    "y": 657,
+    "w": 167,
+    "h": 47
+   }
   },
   {
    "from": 4,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 4,
    "to": 5,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 4,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 5,
    "to": 4,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 5,
    "to": 6,
-   "label": "Novo pedido"
+   "label": "Novo pedido",
+   "rect": {
+    "x": 16,
+    "y": 192,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 5,
    "to": 22,
-   "label": "Precisa de ajuda?"
+   "label": "Precisa de ajuda?",
+   "rect": {
+    "x": 209,
+    "y": 657,
+    "w": 167,
+    "h": 47
+   }
   },
   {
    "from": 5,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 5,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 5,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 6,
    "to": 5,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 6,
    "to": 7,
-   "label": "Sub23"
+   "label": "Sub23",
+   "rect": {
+    "x": 16,
+    "y": 148,
+    "w": 358,
+    "h": 76
+   }
   },
   {
    "from": 6,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 6,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 6,
    "to": 5,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 6,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 7,
    "to": 8,
-   "label": "Continuar"
+   "label": "Continuar",
+   "rect": {
+    "x": 16,
+    "y": 655,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 7,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 7,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 7,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 8,
    "to": 7,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 8,
    "to": 9,
-   "label": "Chave Móvel Digital"
+   "label": "Chave Móvel Digital",
+   "rect": {
+    "x": 16,
+    "y": 148,
+    "w": 358,
+    "h": 76
+   }
   },
   {
    "from": 8,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 8,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 8,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 9,
    "to": 10,
-   "label": "No meu telemóvel (NFC)"
+   "label": "No meu telemóvel (NFC)",
+   "rect": {
+    "x": 16,
+    "y": 366,
+    "w": 358,
+    "h": 54
+   }
   },
   {
    "from": 9,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 9,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 9,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 10,
    "to": 11,
-   "label": "Enviar pedido"
+   "label": "Enviar pedido",
+   "rect": {
+    "x": 16,
+    "y": 655,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 10,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 10,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 10,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 11,
    "to": 12,
-   "label": "Ver os meus pedidos"
+   "label": "Ver os meus pedidos",
+   "rect": {
+    "x": 16,
+    "y": 655,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 11,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 11,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 11,
    "to": 12,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 11,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 12,
    "to": 4,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 12,
    "to": 6,
-   "label": "Novo pedido"
+   "label": "Novo pedido",
+   "rect": {
+    "x": 16,
+    "y": 230,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 12,
    "to": 22,
-   "label": "Precisa de ajuda?"
+   "label": "Precisa de ajuda?",
+   "rect": {
+    "x": 209,
+    "y": 657,
+    "w": 167,
+    "h": 47
+   }
   },
   {
    "from": 12,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 12,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 12,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 13,
    "to": 14,
-   "label": "Renovar passe"
+   "label": "Renovar passe",
+   "rect": {
+    "x": 17,
+    "y": 307,
+    "w": 357,
+    "h": 66
+   }
   },
   {
    "from": 14,
    "to": 13,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 14,
    "to": 15,
-   "label": "Pagar 40,00 € e renovar"
+   "label": "Pagar 40,00 € e renovar",
+   "rect": {
+    "x": 16,
+    "y": 655,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 14,
    "to": 13,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 15,
    "to": 16,
-   "label": "✕"
+   "label": "✕",
+   "rect": {
+    "x": 329,
+    "y": 543,
+    "w": 30,
+    "h": 30
+   }
   },
   {
    "from": 15,
    "to": 17,
-   "label": "Sim, ajudar"
+   "label": "Sim, ajudar",
+   "rect": {
+    "x": 31,
+    "y": 657,
+    "w": 329,
+    "h": 50
+   }
   },
   {
    "from": 16,
    "to": 14,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 16,
    "to": 17,
-   "label": "Precisa de ajuda?"
+   "label": "Precisa de ajuda?",
+   "rect": {
+    "x": 209,
+    "y": 657,
+    "w": 167,
+    "h": 47
+   }
   },
   {
    "from": 16,
    "to": 13,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 17,
    "to": 16,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 17,
    "to": 18,
-   "label": "Sim, pagar com MB WAY"
+   "label": "Sim, pagar com MB WAY",
+   "rect": {
+    "x": 16,
+    "y": 311,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 17,
    "to": 19,
-   "label": "Usar outro meio"
+   "label": "Usar outro meio",
+   "rect": {
+    "x": 16,
+    "y": 371,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 17,
    "to": 13,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 18,
    "to": 17,
-   "label": "Recusar"
+   "label": "Recusar",
+   "rect": {
+    "x": 24,
+    "y": 138,
+    "w": 168,
+    "h": 40
+   }
   },
   {
    "from": 18,
    "to": 20,
-   "label": "Confirmar"
+   "label": "Confirmar",
+   "rect": {
+    "x": 200,
+    "y": 138,
+    "w": 166,
+    "h": 40
+   }
   },
   {
    "from": 19,
    "to": 17,
-   "label": "Cancelar"
+   "label": "Cancelar",
+   "rect": {
+    "x": 16,
+    "y": 728,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 20,
    "to": 13,
-   "label": "Voltar ao início"
+   "label": "Voltar ao início",
+   "rect": {
+    "x": 16,
+    "y": 655,
+    "w": 358,
+    "h": 50
+   }
   },
   {
    "from": 20,
    "to": 13,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 21,
    "to": 4,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 21,
    "to": 22,
-   "label": "Andy · Ajuda"
+   "label": "Andy · Ajuda",
+   "rect": {
+    "x": 17,
+    "y": 283,
+    "w": 357,
+    "h": 59
+   }
   },
   {
    "from": 21,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 21,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 21,
    "to": 5,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 22,
    "to": 4,
-   "label": "‹"
+   "label": "‹",
+   "rect": {
+    "x": 10,
+    "y": 44,
+    "w": 34,
+    "h": 34
+   }
   },
   {
    "from": 22,
    "to": 3,
-   "label": "O carregamento ficou no cartão?"
+   "label": "O carregamento ficou no cartão?",
+   "rect": {
+    "x": 16,
+    "y": 241,
+    "w": 225,
+    "h": 35
+   }
   },
   {
    "from": 22,
    "to": 5,
-   "label": "Pedir o Sub23"
+   "label": "Pedir o Sub23",
+   "rect": {
+    "x": 249,
+    "y": 241,
+    "w": 114,
+    "h": 35
+   }
   },
   {
    "from": 22,
    "to": 4,
-   "label": "Início"
+   "label": "Início",
+   "rect": {
+    "x": 0,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 22,
    "to": 1,
-   "label": "Cartão"
+   "label": "Cartão",
+   "rect": {
+    "x": 98,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 22,
    "to": 5,
-   "label": "Pedidos"
+   "label": "Pedidos",
+   "rect": {
+    "x": 195,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   },
   {
    "from": 22,
    "to": 21,
-   "label": "Mais"
+   "label": "Mais",
+   "rect": {
+    "x": 293,
+    "y": 724,
+    "w": 98,
+    "h": 50
+   }
   }
  ]
 }
