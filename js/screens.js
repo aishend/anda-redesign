@@ -32,10 +32,10 @@ const HIST = [
 ];
 
 const PASSES = [
-  { id: 'sub23', t: 'Sub23', s: 'Até aos 23 anos · gratuito' },
-  { id: '4_18', t: '4_18', s: 'Estudantes dos 4 aos 18 anos' },
-  { id: 'senior', t: 'Sénior 65+', s: 'A partir dos 65 anos' },
-  { id: 'social', t: 'Social+', s: 'Apoio social' },
+  { id: 'sub23', t: 'Sub23', s: 'Dos 4 aos 23 anos · gratuito' },
+  { id: '3z', t: 'Andante 3Z', s: '3 zonas à escolha · 30 €/mês' },
+  { id: 'metro', t: 'Andante Metropolitano', s: 'Toda a área metropolitana · 40 €/mês' },
+  { id: 'senior', t: 'Sénior 65+', s: 'A partir dos 65 anos · gratuito' },
 ];
 const ENTREGA = [
   { id: 'nfc', t: 'No meu telemóvel (NFC)', s: 'Fica disponível logo após a aprovação', p: '0,00 €' },
@@ -141,7 +141,7 @@ const SCREENS = {
         <div class="list">
           <button class="item tap" ${sel.u === 'carlos' ? 'data-go="renovar"' : 'data-toast="O Sub23 de novembro já foi carregado. Veja no Cartão."'} data-label="Renovar passe"><span class="ic">${I.topup}</span><div class="grow"><div class="t">Renovar passe</div><div class="s">${sel.u === 'carlos' ? 'Novembro · 40,00 €' : 'Novembro · 0,00 €'}</div></div>${I.chev}</button>
           <button class="item tap" data-go="app-cartao" data-set="f=tudo" data-label="Ver histórico"><span class="ic">${I.card}</span><div class="grow"><div class="t">Ver histórico</div><div class="s">Viagens e carregamentos</div></div>${I.chev}</button>
-          <button class="item tap" data-go="app-pedidos" data-label="Pedir um passe"><span class="ic">${I.doc}</span><div class="grow"><div class="t">Pedir um passe</div><div class="s">Sub23, 4_18, Sénior e outros</div></div>${I.chev}</button>
+          <button class="item tap" data-go="app-pedidos" data-label="Pedir um passe"><span class="ic">${I.doc}</span><div class="grow"><div class="t">Pedir um passe</div><div class="s">Sub23, Andante 3Z, Metropolitano e Sénior</div></div>${I.chev}</button>
         </div>
       </div>
       ${v === 'A' ? H.andyFab() : ''}
