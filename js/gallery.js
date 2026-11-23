@@ -49,9 +49,9 @@ const FLOWS = {
       F('Andy · outro meio', 'andy', { u: 'carlos', ctx: 'erro', sheet: '1' }),
     ],
     B: [
-      F('Erro com solução', 'b-erro', { u: 'carlos' }),
-      F('Erro · confirmar no MB WAY', 'b-erro', { u: 'carlos', mb: '1' }),
-      F('Erro · outro meio', 'b-erro', { u: 'carlos', sheet: '1' }),
+      F('Erro + Andy no ecrã', 'b-erro', { u: 'carlos' }),
+      F('Erro + Andy · confirmar no MB WAY', 'b-erro', { u: 'carlos', mb: '1' }),
+      F('Erro + Andy · outro meio', 'b-erro', { u: 'carlos', sheet: '1' }),
     ],
     common1: [
       F('Passe renovado', 'renovado', { u: 'carlos' }),
@@ -60,7 +60,7 @@ const FLOWS = {
   'Outros ecrãs': {
     common0: [F('Mais', 'app-mais', { u: 'sofia' })],
     A: [F('Andy · início', 'andy', { u: 'sofia', ctx: 'geral' })],
-    B: [],
+    B: [F('Andy · início', 'andy', { u: 'sofia', ctx: 'geral' })],
     common1: [],
   },
 };

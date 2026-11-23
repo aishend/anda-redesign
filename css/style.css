@@ -256,3 +256,10 @@ body.gallery { background: #e9ebf3; }
 .gal-item .lbl { font-size: 14px; font-weight: 700; color: var(--ink-2); }
 .gal-item .phone { border-width: 0; border-radius: 0; box-shadow: 0 2px 8px rgba(20,25,60,.15); }
 .app:has(.footer-actions) .andy-fab { bottom: 150px; }
+
+.andy-card { display: flex; flex-direction: column; gap: 10px; border: 1.5px solid var(--anda-light); }
+.andy-card .andy-head { display: flex; align-items: center; gap: 8px; }
+.andy-card p { margin: 0; font-size: 15px; line-height: 1.4; }
+.foto-btns { margin-top: -4px; padding-left: 4px; }
+.foto-btns .chip { display: inline-flex; align-items: center; gap: 6px; }
+.nfc-illu { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }

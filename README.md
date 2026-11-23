@@ -26,7 +26,7 @@ python3 -m http.server 8765
 |---|---|---|
 | 1 · Widget do passe | Widget simples; para saber se o carregamento ficou no cartão é preciso abrir o histórico e filtrar | O próprio widget mostra se há um carregamento por gravar |
 | 2 · Pedir o Sub23 | 2 ecrãs: tipo de passe → idade + entrega no mesmo ecrã | Passo a passo em 4 ecrãs, com barra de progresso e ecrã de confirmação |
-| 3 · Resolver um erro | Assistente Andy: pop-up → conversa → MB WAY | Sem assistente: o ecrã de erro já mostra a solução (pagar com MB WAY) |
+| 3 · Andy resolve um erro | Andy num pop-up → página de conversa → MB WAY | Andy dentro do ecrã de erro, já com a solução (MB WAY), sem abrir conversa |
 
 Para mudar uma alternativa, edite o ecrã respetivo em `js/screens.js`.
 

@@ -43,6 +43,22 @@ const ENTREGA = [
   { id: 'novo', t: 'Cartão novo por correio', s: 'Entrega em 5 a 7 dias úteis', p: '3,00 €' },
 ];
 
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// Respostas simuladas do Andy (por palavras-chave) — o caminho principal da tarefa continua a ser pelos botões
+function andyReply(t, u) {
+  const m = t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const has = (...k) => k.some(x => m.includes(x));
+  if (has('ola', 'bom dia', 'boa tarde', 'boa noite')) return `Olá, ${u.nome}! Em que posso ajudar?`;
+  if (has('mb way', 'mbway', 'pagar', 'pagamento', 'pago', 'cartao bancario', 'multibanco')) return 'Posso pagar com o MB WAY deste telemóvel. Toque em «Sim, pagar com MB WAY» e confirme na app do MB WAY. Não é cobrado nada antes de confirmar.';
+  if (has('erro', 'nao consigo', 'falhou', 'problema')) return 'A renovação parou porque não há nenhum método de pagamento guardado. Não foi cobrado nada. Posso ajudar a pagar com o MB WAY.';
+  if (has('renov')) return 'Para renovar, vá a Início → Renovar passe. Se faltar um método de pagamento, eu ajudo a resolver.';
+  if (has('sub23', 'pedir', 'pedido', 'passe novo')) return 'Pode pedir o Sub23 na app: Pedidos → Novo pedido. Com a Chave Móvel Digital a idade fica confirmada na hora.';
+  if (has('validar', 'valid', 'carreg', 'gravad', 'cartao')) return 'Em Cartão → Carregamentos vê se cada carregamento já ficou gravado. Se aparecer «por gravar», encoste o cartão ao telemóvel ou valide numa estação.';
+  if (has('obrigad')) return 'De nada! Estou aqui se precisar.';
+  return 'Desculpe, ainda não sei responder a isso. Posso ajudar a renovar o passe, pagar com MB WAY, pedir o Sub23 ou ver os carregamentos.';
+}
+
 /* ---------- Componentes ---------- */
 const H = {
   top(title, back) {
@@ -60,6 +76,17 @@ const H = {
   },
   option(on, set, t, s, price = '', go = '') {
     return `<button class="option ${on ? 'on' : ''}" data-set="${set}" ${go ? `data-go="${go}"` : ''} data-label="${t}"><span class="radio"><i></i></span><span style="flex:1"><div class="t">${t}</div>${s ? `<div class="s">${s}</div>` : ''}</span>${price ? `<span class="price">${price}</span>` : ''}</button>`;
+  },
+  nfcIllu() {
+    return `<svg viewBox="0 0 200 110" width="200" height="110" aria-hidden="true">
+      <rect x="92" y="14" width="96" height="60" rx="8" fill="#bbbfe6" transform="rotate(-12 140 44)"/>
+      <rect x="98" y="22" width="40" height="8" rx="3" fill="#303f9f" transform="rotate(-12 140 44)"/>
+      <rect x="30" y="6" width="58" height="100" rx="10" fill="#1a237e"/><rect x="35" y="16" width="48" height="78" rx="4" fill="#fff"/>
+      <path d="M96 40a14 14 0 010 22M102 34a22 22 0 010 34" stroke="#303f9f" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <text x="59" y="58" font-size="13" font-weight="700" fill="#303f9f" text-anchor="middle" font-family="Source Sans 3, sans-serif">NFC</text></svg>`;
+  },
+  fotoBtns() {
+    return `<div class="chips foto-btns"><button class="chip" data-toast="Abre a câmara (simulado)." data-label="Fotografar">${I.camera.replace('width="24" height="24"', 'width="16" height="16"')} Fotografar</button><button class="chip" data-toast="Abre os ficheiros (simulado)." data-label="Escolher ficheiro">${I.doc.replace('width="24" height="24"', 'width="16" height="16"')} Escolher ficheiro</button></div>`;
   },
   andyFab(ctx = 'geral') {
     return `<button class="andy-fab" data-go="andy" data-set="ctx=${ctx}" data-label="Precisa de ajuda?"><span class="andy-av">A</span><span>Precisa de ajuda?</span></button>`;
@@ -112,7 +139,7 @@ const SCREENS = {
         ${H.pass(u)}
         <div class="section-title">O que quer fazer?</div>
         <div class="list">
-          <button class="item tap" data-go="renovar" data-label="Renovar passe"><span class="ic">${I.topup}</span><div class="grow"><div class="t">Renovar passe</div><div class="s">${sel.u === 'carlos' ? 'Novembro · 40,00 €' : 'Novembro · 0,00 €'}</div></div>${I.chev}</button>
+          <button class="item tap" ${sel.u === 'carlos' ? 'data-go="renovar"' : 'data-toast="O Sub23 de novembro já foi carregado. Veja no Cartão."'} data-label="Renovar passe"><span class="ic">${I.topup}</span><div class="grow"><div class="t">Renovar passe</div><div class="s">${sel.u === 'carlos' ? 'Novembro · 40,00 €' : 'Novembro · 0,00 €'}</div></div>${I.chev}</button>
           <button class="item tap" data-go="app-cartao" data-set="f=tudo" data-label="Ver histórico"><span class="ic">${I.card}</span><div class="grow"><div class="t">Ver histórico</div><div class="s">Viagens e carregamentos</div></div>${I.chev}</button>
           <button class="item tap" data-go="app-pedidos" data-label="Pedir um passe"><span class="ic">${I.doc}</span><div class="grow"><div class="t">Pedir um passe</div><div class="s">Sub23, 4_18, Sénior e outros</div></div>${I.chev}</button>
         </div>
@@ -157,7 +184,7 @@ const SCREENS = {
     return `<div class="app">${H.top('Mais', 'app-inicio')}
       <div class="content"><div class="list">
         ${it(I.user, 'Perfil')}${it(I.card, 'Meios de pagamento')}${it(I.gear, 'Definições')}
-        ${v === 'A' ? it(I.help, 'Andy · Ajuda', 'data-go="andy" data-set="ctx=geral"') : it(I.help, 'Ajuda e perguntas frequentes')}
+        ${it(I.help, 'Andy · Ajuda', 'data-go="andy" data-set="ctx=geral"')}
         ${it(I.mail, 'Contactos')}${it(I.logout, 'Terminar sessão')}
       </div><div class="small" style="text-align:center">Protótipo académico · IPC FEUP 2026/27</div></div>
       ${H.tabs('app-mais')}</div>`;
@@ -179,7 +206,7 @@ const SCREENS = {
         <div class="q">Comprovar a idade</div>
         <div class="options">
           ${H.option(sel.id === 'cmd', 'id=cmd', 'Chave Móvel Digital', `${u.completo} · ${u.idade} anos ✓ · pode pedir o Sub23`)}
-          ${H.option(sel.id === 'foto', 'id=foto', 'Enviar foto do Cartão de Cidadão', 'Fotografar ou escolher ficheiro')}
+          ${H.option(sel.id === 'foto', 'id=foto', 'Enviar foto do Cartão de Cidadão', '')}${H.fotoBtns()}
         </div>
         <div class="q">Onde quer o passe?</div>
         <div class="options">${ENTREGA.map(e => H.option(sel.ent === e.id, `ent=${e.id}`, e.t, '', e.p)).join('')}</div>
@@ -194,7 +221,7 @@ const SCREENS = {
     const u = USERS.sofia;
     return SCREENS._wiz(2, sel, 'Como quer comprovar a idade?', `<div class="options">
       ${H.option(sel.id === 'cmd', 'id=cmd', 'Chave Móvel Digital', `${u.completo} · ${u.idade} anos ✓ · pode pedir o Sub23`)}
-      ${H.option(sel.id === 'foto', 'id=foto', 'Enviar foto do Cartão de Cidadão', 'Fotografar ou escolher ficheiro')}</div>
+      ${H.option(sel.id === 'foto', 'id=foto', 'Enviar foto do Cartão de Cidadão', '')}${H.fotoBtns()}</div>
       <div class="alertbox info">A Chave Móvel Digital confirma a idade na hora. Com foto, o pedido demora mais 2 dias.</div>`, !!sel.id);
   },
   'b-pedido-3'(sel) { return SCREENS._wiz(3, sel, 'Onde quer o passe?', `<div class="options">${ENTREGA.map(e => H.option(sel.ent === e.id, `ent=${e.id}`, e.t, e.s, e.p)).join('')}</div>`, !!sel.ent); },
@@ -237,7 +264,7 @@ const SCREENS = {
       <div class="content">
         <div class="card"><div class="kv"><span>Título</span><span>${u.passe}</span></div><div class="kv"><span>Período</span><span>1 a 30 nov</span></div><div class="kv"><span>Preço</span><span>40,00 €</span></div></div>
         <div class="card" style="display:flex;justify-content:space-between"><b>Pagar com</b><span class="muted">Nenhum guardado</span></div>
-        <div class="alertbox info" style="display:flex;gap:12px;align-items:center"><span style="color:var(--anda-blue)">${I.nfc}</span><span>Depois de pagar, encoste o cartão Andante atrás do telemóvel para gravar o passe.</span></div>
+        <div class="card nfc-illu">${H.nfcIllu()}<div class="muted">Depois de pagar, encoste o cartão Andante atrás do telemóvel para gravar o passe.</div></div>
       </div>
       ${v === 'A' ? H.andyFab('renovar') : ''}
       <div class="footer-actions"><button class="btn primary" data-go="${v === 'B' ? 'b-erro' : 'a-erro'}" data-set="${v === 'B' ? '' : 'pop=1'}" data-label="Pagar 40,00 € e renovar">Pagar 40,00 € e renovar</button></div>
@@ -270,25 +297,27 @@ const SCREENS = {
       : `<div class="msg-who">Andy</div><div class="msg bot">Olá, ${u.nome}! Sou o Andy, o assistente da Anda. Em que posso ajudar?</div>
          <div class="chips"><button class="chip" data-go="renovar" data-label="Renovar o passe">Renovar o passe</button><button class="chip" data-go="app-cartao" data-set="f=carregamentos" data-label="O carregamento ficou no cartão?">O carregamento ficou no cartão?</button><button class="chip" data-go="app-pedidos" data-label="Pedir o Sub23">Pedir o Sub23</button></div>`;
     return `<div class="app">${H.top('Andy', erro ? 'a-erro' : 'app-inicio')}
-      <div class="chat">${msgs}${sel.said ? `<div class="msg me">${sel.said}</div><div class="msg-who">Andy</div><div class="msg bot">Desculpe, neste protótipo só consigo ajudar com as opções acima.</div>` : ''}</div>
+      <div class="chat">${msgs}${sel.said ? `<div class="msg me">${esc(sel.said)}</div><div class="msg-who">Andy</div><div class="msg bot">${andyReply(sel.said, u)}</div>` : ''}</div>
       <form class="composer" data-chat><input name="m" placeholder="Escreva ou toque no microfone…" autocomplete="off"><button type="button" class="mic" data-toast="A ouvir… (simulado)" data-label="mic">${I.mic}</button></form>
       ${sel.mb === '1' ? H.mbway('renovado') : ''}
       ${sel.sheet === '1' ? SCREENS._outroMeio() : ''}
       ${H.tabs('app-inicio')}</div>`;
   },
 
-  // Versão B: sem assistente — a ajuda aparece no próprio erro, com a solução pronta a usar
+  // Versão B: o Andy aparece dentro do próprio ecrã de erro (sem pop-up nem página de conversa)
   'b-erro'(sel) {
+    const u = USERS[sel.u || 'carlos'];
     return `<div class="app">${H.top('Renovar passe', 'renovar')}
       <div class="content">
         <div class="result" style="padding-top:6px"><div class="big err">${I.alert}</div><h2>Não foi possível renovar</h2></div>
         <div class="alertbox err"><b>Falta um método de pagamento.</b>Não foi cobrado nada.</div>
-        <div class="section-title">Como resolver</div>
-        <div class="card" style="display:flex;flex-direction:column;gap:10px">
-          <div style="display:flex;gap:10px;align-items:center"><span class="notif-mb" style="width:34px;height:34px;border-radius:8px;background:#d6001c;color:#fff;font-weight:800;font-size:12px;display:grid;place-items:center">MB</span><div><b>MB WAY deste telemóvel</b><div class="muted">912 *** 678 · encontrado neste telemóvel</div></div></div>
-          <button class="btn primary" data-set="mb=1" data-label="Pagar 40,00 € com MB WAY">Pagar 40,00 € com MB WAY</button>
+        <div class="card andy-card">
+          <div class="andy-head"><span class="andy-av">A</span><b>Andy</b><span class="small">o seu assistente</span></div>
+          <p>${u.nome}, a renovação parou porque não tem nenhum método de pagamento. Posso pagar os <b>40,00 €</b> com o MB WAY deste telemóvel (912 *** 678) e renovar já o passe.</p>
+          <button class="btn primary" data-set="mb=1" data-label="Sim, pagar com MB WAY">Sim, pagar com MB WAY</button>
+          <button class="btn secondary" data-set="sheet=1" data-label="Usar outro meio">Usar outro meio</button>
+          <div class="small">Depois de confirmar no MB WAY, encoste o cartão ao telemóvel para gravar o passe.</div>
         </div>
-        <button class="btn secondary" data-set="sheet=1" data-label="Usar outro meio">Usar outro meio</button>
       </div>
       ${sel.mb === '1' ? H.mbway('renovado') : ''}
       ${sel.sheet === '1' ? SCREENS._outroMeio() : ''}
