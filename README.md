@@ -42,7 +42,7 @@ Dados registados por tarefa: sucesso, tempo, toques (totais, em botões e fora),
 ## Passar para o Figma (protótipo clicável com link figma.com/proto)
 
 1. Publique o protótipo (GitHub Pages).
-2. Importe `galeria.html?v=A&figma` e `galeria.html?v=B&figma` para o ficheiro Figma (html.to.design ou a captura do Figma MCP). Cada galeria fica uma frame «Anda · Galeria de ecrãs».
+2. Importe `galeria.html?figma` (versões A e B na mesma página) para o ficheiro Figma (html.to.design ou a captura do Figma MCP).
 3. No Figma Desktop: *Plugins → Development → Import plugin from manifest…* e escolha `figma-plugin/manifest.json` (só da primeira vez).
 4. Corra *Plugins → Development → Anda · atualizar protótipo*. Ele põe cada versão na sua página, apaga os ecrãs antigos, cria as zonas clicáveis alinhadas com os botões e os pontos de início (1 por tarefa).
 5. Carregue em ▶ **Present** e partilhe o link do protótipo.
