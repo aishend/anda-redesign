@@ -41,14 +41,13 @@ Dados registados por tarefa: sucesso, tempo, toques (totais, em botões e fora),
 
 ## Passar para o Figma (protótipo clicável com link figma.com/proto)
 
-1. Publique o protótipo (GitHub Pages) ou sirva-o localmente.
-2. No Figma, use o plugin **html.to.design** e importe `galeria.html?v=A&figma` (e depois `?v=B&figma`, ou tudo sem `v`). Cada ecrã fica uma frame de 390×800 editável.
-3. Na galeria (no browser), carregue em **Descarregar ligações para o Figma (JSON)** com o mesmo filtro de versão.
-4. No Figma Desktop: *Plugins → Development → Import plugin from manifest…* e escolha `figma-plugin/manifest.json`.
-5. Selecione a frame importada, corra o plugin **Anda · ligar ecrãs**, escolha o JSON e carregue em **Ligar ecrãs**. Ele dá nome às frames, cria as ligações de clique e define os pontos de início «Versão A» e «Versão B».
-6. Carregue em ▶ **Present** e partilhe o link do protótipo (e use-o no Maze, se quiserem).
+1. Publique o protótipo (GitHub Pages).
+2. Importe `galeria.html?v=A&figma` e `galeria.html?v=B&figma` para o ficheiro Figma (html.to.design ou a captura do Figma MCP). Cada galeria fica uma frame «Anda · Galeria de ecrãs».
+3. No Figma Desktop: *Plugins → Development → Import plugin from manifest…* e escolha `figma-plugin/manifest.json` (só da primeira vez).
+4. Corra *Plugins → Development → Anda · atualizar protótipo*. Ele põe cada versão na sua página, apaga os ecrãs antigos, cria as zonas clicáveis alinhadas com os botões e os pontos de início (1 por tarefa).
+5. Carregue em ▶ **Present** e partilhe o link do protótipo.
 
-> O plugin encontra os botões pelo texto. Se o html.to.design importar algum texto de forma diferente, o plugin indica os botões que não ligou e esses ligam-se à mão.
+> As ligações estão dentro de `figma-plugin/code.js` (`DATA`). Se mudar ecrãs ou botões, gere-as de novo a partir de `window.FIGMA_LINKS` na galeria.
 
 ## Estrutura
 
@@ -58,6 +57,6 @@ js/icons.js       ícones SVG
 js/screens.js     todos os ecrãs + dados + texto das tarefas
 js/engine.js      navegação, sessão de teste, SUS, exportação CSV
 js/gallery.js     lista de ecrãs da galeria e cálculo das ligações
-figma-plugin/     plugin do Figma que liga os ecrãs importados
+figma-plugin/     plugin do Figma que organiza os ecrãs importados e cria as ligações
 assets/           logótipos e padrão retirados do APK
 ```
