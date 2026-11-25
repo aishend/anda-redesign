@@ -52,11 +52,10 @@ class Phone {
     const valid = !!b && !b.disabled;
     this.onClick?.({ action: b ? (b.dataset.label || b.textContent.trim().slice(0, 40)) : '(fora)', valid, back: !!b?.classList.contains('back'), toast: !!b?.dataset.toast });
     if (!valid) return;
-    if (b.dataset.toast) this.toast(b.dataset.toast);
     if (b.dataset.go !== undefined || b.dataset.set !== undefined) {
-      if (b.dataset.go === '') return; // botão sem destino
-      this.go(b.dataset.go, parseSet(b.dataset.set));
+      if (b.dataset.go !== '') this.go(b.dataset.go, parseSet(b.dataset.set)); // '' = botão sem destino
     }
+    if (b.dataset.toast) this.toast(b.dataset.toast); // depois de navegar, para não ser apagado
   }
 }
 
