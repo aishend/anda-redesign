@@ -63,8 +63,9 @@ function andyReply(t, u) {
 
 /* ---------- Componentes ---------- */
 const H = {
-  top(title, back) {
-    return `<div class="topbar">${back ? `<button class="back" data-go="${back}" data-label="‹" aria-label="Voltar"><span class="glyph">‹</span></button>` : `<img class="logo" src="assets/logo_anda_white.png" alt="anda">`}<h1>${back ? title : ''}</h1></div>`;
+  top(title, back, cancel) {
+    const c = cancel ? `<button class="cancel-top" data-go="${cancel.go}" data-set="${cancel.set}" data-toast="${cancel.toast}" data-label="Cancelar">Cancelar</button>` : '';
+    return `<div class="topbar">${back ? `<button class="back" data-go="${back}" data-label="‹" aria-label="Voltar"><span class="glyph">‹</span></button>` : `<img class="logo" src="assets/logo_anda_white.png" alt="anda">`}<h1>${back ? title : ''}</h1>${c}</div>`;
   },
   tabs(on) {
     const t = [['app-inicio', 'Início', I.home], ['app-cartao', 'Cartão', I.card], ['app-pedidos', 'Pedidos', I.list], ['app-mais', 'Mais', I.more]];
@@ -109,6 +110,10 @@ const H = {
 };
 
 /* ---------- Ecrãs ---------- */
+// «Cancelar» no topo de todos os ecrãs intermédios de um processo com vários passos
+const CANCELA_PEDIDO = { go: 'app-pedidos', set: 'tipo=;id=;ent=', toast: 'Pedido cancelado. Nada foi enviado.' };
+const CANCELA_RENOV = { go: 'app-inicio', set: 'ctx=;pop=;mb=;sheet=;said=', toast: 'Renovação cancelada. Não foi cobrado nada.' };
+
 const SCREENS = {
   /* Ecrã inicial do telemóvel, com o widget da Anda (Tarefa 1) */
   'os-home'(sel, v) {
@@ -200,7 +205,7 @@ const SCREENS = {
 
   /* ----- Tarefa 2 · Versão A: duas páginas (escolher passe → detalhes num só ecrã) ----- */
   'a-pedido-tipo'(sel) {
-    return `<div class="app">${H.top('Novo pedido', 'app-pedidos')}
+    return `<div class="app">${H.top('Novo pedido', 'app-pedidos', CANCELA_PEDIDO)}
       <div class="content"><div class="q">Que passe quer pedir?</div>
         <div class="options">${PASSES.map(p => H.option(sel.tipo === p.id, `tipo=${p.id}`, p.t, p.s)).join('')}</div></div>
       <div class="footer-actions"><button class="btn primary" ${sel.tipo ? '' : 'disabled'} data-go="a-pedido-detalhes" data-label="Continuar">Continuar</button></div>
@@ -209,7 +214,7 @@ const SCREENS = {
   'a-pedido-detalhes'(sel) {
     const u = USERS.sofia;
     const ok = sel.id && sel.ent;
-    return `<div class="app">${H.top('Pedido ' + (PASSES.find(p => p.id === sel.tipo) || PASSES[0]).t, 'a-pedido-tipo')}
+    return `<div class="app">${H.top('Pedido ' + (PASSES.find(p => p.id === sel.tipo) || PASSES[0]).t, 'a-pedido-tipo', CANCELA_PEDIDO)}
       <div class="content">
         <div class="q">Comprovar a idade</div>
         <div class="options">
@@ -253,7 +258,7 @@ const SCREENS = {
                      : `<span class="step ${cls} off"><i></i>${nome}</span>`;
     }).join('');
     const next = n < 4 ? `data-go="b-pedido-${n + 1}" data-label="Continuar"` : `data-go="pedido-enviado" data-set="enviado=1" data-label="Enviar pedido"`;
-    return `<div class="app">${H.top('Novo pedido', back || `b-pedido-${n - 1}`)}
+    return `<div class="app">${H.top('Novo pedido', back || `b-pedido-${n - 1}`, CANCELA_PEDIDO)}
       <div class="content"><div class="progress">${prog}</div><div class="small">Passo ${n} de 4</div>
         <div class="q">${q}</div>${body}</div>
       <div class="footer-actions"><button class="btn primary" ${can ? '' : 'disabled'} ${next}>${n < 4 ? 'Continuar' : 'Enviar pedido'}</button></div>
@@ -275,7 +280,7 @@ const SCREENS = {
   /* ----- Tarefa 3: renovar o passe sem método de pagamento ----- */
   'renovar'(sel, v) {
     const u = USERS[sel.u || 'carlos'];
-    return `<div class="app">${H.top('Renovar passe', 'app-inicio')}
+    return `<div class="app">${H.top('Renovar passe', 'app-inicio', CANCELA_RENOV)}
       <div class="content">
         <div class="card"><div class="kv"><span>Título</span><span>${u.passe}</span></div><div class="kv"><span>Período</span><span>1 a 30 nov</span></div><div class="kv"><span>Preço</span><span>40,00 €</span></div></div>
         <div class="card" style="display:flex;justify-content:space-between"><b>Pagar com</b><span class="muted">Nenhum guardado</span></div>
@@ -288,7 +293,7 @@ const SCREENS = {
 
   // Versão A: erro + pop-up do Andy que oferece ajuda
   'a-erro'(sel) {
-    return `<div class="app">${H.top('Renovar passe', 'renovar')}
+    return `<div class="app">${H.top('Renovar passe', 'renovar', CANCELA_RENOV)}
       <div class="content">
         <div class="result"><div class="big err">${I.alert}</div><h2>Não foi possível renovar</h2></div>
         <div class="alertbox err"><b>Falta um método de pagamento.</b>Não foi cobrado nada.</div>
@@ -313,7 +318,7 @@ const SCREENS = {
          <div class="small">Depois de confirmar no MB WAY, encoste o cartão ao telemóvel para gravar o passe.</div>`
       : `<div class="msg-who">Andy</div><div class="msg bot">Olá, ${u.nome}! Sou o Andy, o assistente da Anda. Em que posso ajudar?</div>
          <div class="chips"><button class="chip" data-go="renovar" data-label="Renovar o passe">Renovar o passe</button><button class="chip" data-go="app-cartao" data-set="f=carregamentos" data-label="O carregamento ficou no cartão?">O carregamento ficou no cartão?</button><button class="chip" data-go="app-pedidos" data-label="Pedir o Sub23">Pedir o Sub23</button></div>`;
-    return `<div class="app">${H.top('Andy', erro ? 'a-erro' : 'app-inicio')}
+    return `<div class="app">${H.top('Andy', erro ? 'a-erro' : 'app-inicio', erro ? CANCELA_RENOV : null)}
       <div class="chat">${msgs}${sel.said ? `<div class="msg me">${esc(sel.said)}</div><div class="msg-who">Andy</div><div class="msg bot">${andyReply(sel.said, u)}</div>` : ''}</div>
       <form class="composer" data-chat><input name="m" placeholder="Escreva ou toque no microfone…" autocomplete="off"><button type="button" class="mic" data-toast="A ouvir… (simulado)" data-label="mic">${I.mic}</button></form>
       ${sel.mb === '1' ? H.mbway('renovado') : ''}
@@ -324,7 +329,7 @@ const SCREENS = {
   // Versão B: o Andy aparece dentro do próprio ecrã de erro (sem pop-up nem página de conversa)
   'b-erro'(sel) {
     const u = USERS[sel.u || 'carlos'];
-    return `<div class="app">${H.top('Renovar passe', 'renovar')}
+    return `<div class="app">${H.top('Renovar passe', 'renovar', CANCELA_RENOV)}
       <div class="content">
         <div class="result compact"><div class="big err">${I.alert}</div><h2>Não foi possível renovar</h2></div>
         <div class="alertbox err"><b>Falta um método de pagamento.</b>Não foi cobrado nada.</div>
