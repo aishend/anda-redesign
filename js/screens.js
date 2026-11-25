@@ -24,9 +24,11 @@ const USERS = {
 
 // Histórico da Sofia (tarefa 1). O carregamento de novembro foi pago na app mas ainda não foi gravado no cartão.
 const HIST = [
+  { dia: '29 out', tipo: 'b', t: 'STCP 205 · Campanhã → Boavista', r: '17:30' },
   { dia: '29 out', tipo: 'v', t: 'Validação · Trindade (Metro)', r: '08:12' },
   { dia: '28 out', tipo: 'c', t: 'Carregamento Sub23 · novembro', s: 'App Anda · por gravar no cartão', r: '0,00 €', pend: true },
   { dia: '28 out', tipo: 'v', t: 'Validação · Campanhã (CP)', r: '18:40' },
+  { dia: '27 out', tipo: 'b', t: 'STCP 500 · Ribeira → Matosinhos', r: '19:05' },
   { dia: '27 out', tipo: 'v', t: 'Validação · Paredes (CP)', r: '08:12' },
   { dia: '30 set', tipo: 'c', t: 'Carregamento Sub23 · outubro', s: 'Máquina Campanhã · gravado no cartão', r: '0,00 €' },
 ];
@@ -66,7 +68,7 @@ const H = {
   },
   tabs(on) {
     const t = [['app-inicio', 'Início', I.home], ['app-cartao', 'Cartão', I.card], ['app-pedidos', 'Pedidos', I.list], ['app-mais', 'Mais', I.more]];
-    return `<nav class="tabbar">${t.map(([go, l, ic]) => `<button data-go="${go}" data-set="f=tudo" class="${go === on ? 'on' : ''}">${ic}<span>${l}</span></button>`).join('')}</nav>`;
+    return `<nav class="tabbar">${t.map(([go, l, ic]) => `<button data-go="${go}" data-set="f=carregamentos" class="${go === on ? 'on' : ''}">${ic}<span>${l}</span></button>`).join('')}</nav>`;
   },
   pass(u, extra = '') {
     return `<div class="card pass"><img class="pattern" src="assets/design_andante_pattern.png" alt="">
@@ -96,8 +98,11 @@ const H = {
       <div class="nb"><b>Confirmar pagamento</b><br>40,00 € a Transportes Metropolitanos do Porto</div>
       <div class="na"><button class="btn secondary" data-set="mb=0" data-toast="Pagamento recusado. Não foi cobrado nada." data-label="Recusar">Recusar</button><button class="btn primary" data-go="${go}" data-set="mb=0" data-label="Confirmar">Confirmar</button></div></div>`;
   },
+  cancelar() {
+    return `<button class="btn link cancel" data-go="app-inicio" data-set="ctx=;pop=;mb=;sheet=;said=" data-toast="Renovação cancelada. Não foi cobrado nada." data-label="Cancelar renovação">Cancelar renovação</button>`;
+  },
   histItem(h) {
-    const ic = h.tipo === 'c' ? (h.pend ? `<span class="ic warn">${I.topup}</span>` : `<span class="ic ok">${I.topup}</span>`) : `<span class="ic">${I.train}</span>`;
+    const ic = h.tipo === 'c' ? (h.pend ? `<span class="ic warn">${I.topup}</span>` : `<span class="ic ok">${I.topup}</span>`) : `<span class="ic">${h.tipo === 'b' ? I.bus : I.train}</span>`;
     const s = h.s ? `<div class="s">${h.pend ? '⚠ ' : '✓ '}${h.s}</div>` : '';
     return `<div class="item">${ic}<div class="grow"><div class="t">${h.t}</div>${s}</div><div class="r">${h.r}</div></div>`;
   },
@@ -121,7 +126,7 @@ const SCREENS = {
     const apps = [['Mapas', '#3c8d5a'], ['Câmara', '#555'], ['Mensagens', '#2fa84f'], ['Calendário', '#e0573d'], ['Fotos', '#d9a033'], ['Definições', '#777'], ['Relógio', '#222'], ['Notas', '#e8c23a']];
     return `<div class="os">
       <div class="clock">21:40</div><div class="date">quinta-feira, 29 de outubro</div>
-      <button class="widget" data-go="app-cartao" data-set="f=tudo" data-label="${u.passe}">${v === 'B' ? widgetB : widgetA}</button>
+      <button class="widget" data-go="app-cartao" data-set="f=carregamentos" data-label="${u.passe}">${v === 'B' ? widgetB : widgetA}</button>
       <div class="apps">${apps.map(([n, c]) => `<button class="app-icon" data-toast="Abra a app Anda ou use o widget." data-label="${n}"><span class="ico" style="background:${c}">${n[0]}</span>${n}</button>`).join('')}</div>
       <div class="dock">
         <button class="app-icon" data-go="app-inicio" data-label="Anda"><span class="ico"><img src="assets/ic_anda.png" alt=""></span>Anda</button>
@@ -140,7 +145,7 @@ const SCREENS = {
         <div class="section-title">O que quer fazer?</div>
         <div class="list">
           <button class="item tap" ${sel.u === 'carlos' ? 'data-go="renovar"' : 'data-toast="O Sub23 de novembro já foi carregado. Veja no Cartão."'} data-label="Renovar passe"><span class="ic">${I.topup}</span><div class="grow"><div class="t">Renovar passe</div><div class="s">${sel.u === 'carlos' ? 'Novembro · 40,00 €' : 'Novembro · 0,00 €'}</div></div>${I.chev}</button>
-          <button class="item tap" data-go="app-cartao" data-set="f=tudo" data-label="Ver histórico"><span class="ic">${I.card}</span><div class="grow"><div class="t">Ver histórico</div><div class="s">Viagens e carregamentos</div></div>${I.chev}</button>
+          <button class="item tap" data-go="app-cartao" data-set="f=carregamentos" data-label="Ver histórico"><span class="ic">${I.card}</span><div class="grow"><div class="t">Ver histórico</div><div class="s">Carregamentos, validações e viagens</div></div>${I.chev}</button>
           <button class="item tap" data-go="app-pedidos" data-label="Pedir um passe"><span class="ic">${I.doc}</span><div class="grow"><div class="t">Pedir um passe</div><div class="s">Sub23, Andante 3Z, Metropolitano e Sénior</div></div>${I.chev}</button>
         </div>
       </div>
@@ -150,15 +155,18 @@ const SCREENS = {
 
   'app-cartao'(sel, v) {
     const u = USERS[sel.u || 'sofia'];
-    const f = sel.f || 'tudo';
-    const rows = HIST.filter(h => f === 'tudo' || (f === 'viagens' ? h.tipo === 'v' : h.tipo === 'c'));
+    const f = ['carregamentos', 'validacoes', 'viagens'].includes(sel.f) ? sel.f : 'carregamentos';
+    const tipo = { carregamentos: 'c', validacoes: 'v', viagens: 'b' }[f];
+    const rows = HIST.filter(h => h.tipo === tipo);
+    const ajuda = { carregamentos: 'Passes carregados e se já estão gravados no cartão.', validacoes: 'Entradas no metro e no comboio.', viagens: 'Viagens de autocarro (STCP).' }[f];
     let html = '', lastDay = '';
     for (const h of rows) { if (h.dia !== lastDay) { html += `<div class="day">${h.dia}</div>`; lastDay = h.dia; } html += H.histItem(h); }
     const chip = (id, l) => `<button class="chip ${f === id ? 'on' : ''}" data-set="f=${id}" data-label="${l}">${l}</button>`;
     return `<div class="app">${H.top('O meu cartão', 'app-inicio')}
       <div class="content">
         ${H.pass(u)}
-        <div class="chips">${chip('tudo', 'Tudo')}${chip('viagens', 'Viagens')}${chip('carregamentos', 'Carregamentos')}</div>
+        <div class="chips">${chip('carregamentos', 'Carregamentos')}${chip('validacoes', 'Validações')}${chip('viagens', 'Viagens')}</div>
+        <div class="small">${ajuda}</div>
         <div class="list">${html}</div>
       </div>
       ${v === 'A' ? H.andyFab() : ''}
@@ -236,7 +244,14 @@ const SCREENS = {
       <div style="display:flex;gap:16px"><button class="btn link" data-go="b-pedido-1" data-label="Alterar passe">Alterar passe</button><button class="btn link" data-go="b-pedido-3" data-label="Alterar entrega">Alterar entrega</button></div>`, true);
   },
   _wiz(n, sel, q, body, can, back) {
-    const prog = [1, 2, 3, 4].map(i => `<span class="${i <= n ? 'on' : ''}"></span>`).join('');
+    const nomes = ['Passe', 'Idade', 'Entrega', 'Confirmar'];
+    const pode = [true, !!sel.tipo, !!(sel.tipo && sel.id), !!(sel.tipo && sel.id && sel.ent)];
+    const prog = nomes.map((nome, k) => {
+      const i = k + 1, cls = `${i <= n ? 'on' : ''} ${i === n ? 'cur' : ''}`;
+      if (i === n) return `<span class="step ${cls}" aria-current="step"><i></i>${nome}</span>`;
+      return pode[k] ? `<button class="step ${cls}" data-go="b-pedido-${i}" data-label="Passo ${i} · ${nome}"><i></i>${nome}</button>`
+                     : `<span class="step ${cls} off"><i></i>${nome}</span>`;
+    }).join('');
     const next = n < 4 ? `data-go="b-pedido-${n + 1}" data-label="Continuar"` : `data-go="pedido-enviado" data-set="enviado=1" data-label="Enviar pedido"`;
     return `<div class="app">${H.top('Novo pedido', back || `b-pedido-${n - 1}`)}
       <div class="content"><div class="progress">${prog}</div><div class="small">Passo ${n} de 4</div>
@@ -281,7 +296,8 @@ const SCREENS = {
       </div>
       ${sel.pop === '1' ? `<div class="andy-pop"><div class="h"><span class="andy-av">A</span>Andy<button class="x" data-set="pop=0" data-label="✕" aria-label="Fechar">✕</button></div>
         <p>Falta um método de pagamento. Posso ajudar a adicionar o MB WAY deste telemóvel e renovar já o passe.</p>
-        <button class="btn primary" data-go="andy" data-set="ctx=erro;pop=0" data-label="Sim, ajudar">Sim, ajudar</button></div>` : H.andyFab('erro')}
+        <button class="btn primary" data-go="andy" data-set="ctx=erro;pop=0" data-label="Sim, ajudar">Sim, ajudar</button>
+        ${H.cancelar()}</div>` : H.andyFab('erro')}
       ${H.tabs('app-inicio')}</div>`;
   },
 
@@ -293,6 +309,7 @@ const SCREENS = {
          <div class="msg-who">Andy</div><div class="msg bot">Quer pagar os <b>40,00 €</b> com o MB WAY deste telemóvel (912 *** 678)?</div>
          <button class="btn primary" data-set="mb=1" data-label="Sim, pagar com MB WAY">Sim, pagar com MB WAY</button>
          <button class="btn secondary" data-set="sheet=1" data-label="Usar outro meio">Usar outro meio</button>
+         ${H.cancelar()}
          <div class="small">Depois de confirmar no MB WAY, encoste o cartão ao telemóvel para gravar o passe.</div>`
       : `<div class="msg-who">Andy</div><div class="msg bot">Olá, ${u.nome}! Sou o Andy, o assistente da Anda. Em que posso ajudar?</div>
          <div class="chips"><button class="chip" data-go="renovar" data-label="Renovar o passe">Renovar o passe</button><button class="chip" data-go="app-cartao" data-set="f=carregamentos" data-label="O carregamento ficou no cartão?">O carregamento ficou no cartão?</button><button class="chip" data-go="app-pedidos" data-label="Pedir o Sub23">Pedir o Sub23</button></div>`;
@@ -309,13 +326,14 @@ const SCREENS = {
     const u = USERS[sel.u || 'carlos'];
     return `<div class="app">${H.top('Renovar passe', 'renovar')}
       <div class="content">
-        <div class="result" style="padding-top:6px"><div class="big err">${I.alert}</div><h2>Não foi possível renovar</h2></div>
+        <div class="result compact"><div class="big err">${I.alert}</div><h2>Não foi possível renovar</h2></div>
         <div class="alertbox err"><b>Falta um método de pagamento.</b>Não foi cobrado nada.</div>
         <div class="card andy-card">
           <div class="andy-head"><span class="andy-av">A</span><b>Andy</b><span class="small">o seu assistente</span></div>
           <p>${u.nome}, a renovação parou porque não tem nenhum método de pagamento. Posso pagar os <b>40,00 €</b> com o MB WAY deste telemóvel (912 *** 678) e renovar já o passe.</p>
           <button class="btn primary" data-set="mb=1" data-label="Sim, pagar com MB WAY">Sim, pagar com MB WAY</button>
           <button class="btn secondary" data-set="sheet=1" data-label="Usar outro meio">Usar outro meio</button>
+          ${H.cancelar()}
           <div class="small">Depois de confirmar no MB WAY, encoste o cartão ao telemóvel para gravar o passe.</div>
         </div>
       </div>

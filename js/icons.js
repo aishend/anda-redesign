@@ -15,6 +15,7 @@ const I = (() => {
     mic: s('<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0"/><path d="M12 18v3"/>'),
     send: s('<path d="M4 12l16-8-6 16-2-7z"/>'),
     plus: s('<path d="M12 5v14M5 12h14"/>'),
+    bus: s('<rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 21v-3M16 21v-3"/><circle cx="8" cy="14.5" r=".8"/><circle cx="16" cy="14.5" r=".8"/>'),
     train: s('<rect x="6" y="3" width="12" height="14" rx="3"/><path d="M6 11h12"/><path d="M8 21l2-4M16 21l-2-4"/>'),
     topup: s('<path d="M12 4v12"/><path d="M7 11l5 5 5-5"/><path d="M5 20h14"/>'),
     phone: s('<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>'),

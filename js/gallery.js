@@ -6,9 +6,9 @@ const F = (nome, screen, sel) => ({ nome, screen, sel: { ...OFF, ...sel } });
 const FLOWS = {
   'Tarefa 1 · Widget do passe': [
     F('Ecrã inicial do telemóvel', 'os-home', { u: 'sofia' }),
-    F('O meu cartão · Tudo', 'app-cartao', { u: 'sofia', f: 'tudo' }),
-    F('O meu cartão · Viagens', 'app-cartao', { u: 'sofia', f: 'viagens' }),
     F('O meu cartão · Carregamentos', 'app-cartao', { u: 'sofia', f: 'carregamentos' }),
+    F('O meu cartão · Validações', 'app-cartao', { u: 'sofia', f: 'validacoes' }),
+    F('O meu cartão · Viagens', 'app-cartao', { u: 'sofia', f: 'viagens' }),
   ],
   'Tarefa 2 · Pedir o Sub23': {
     common0: [
